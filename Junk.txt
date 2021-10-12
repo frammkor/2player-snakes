@@ -1,0 +1,31 @@
+Snake Class removed Methods
+
+        // return the possible Directions that the snake can switch to
+        public ConsoleKey[] GetPosibleDirectionsAsConsoleKeys()
+        {
+            return new ConsoleKey[] {
+                GetLeftTurnKey(),
+                GetRightTurnKey(),
+            };
+        }
+
+        // return the left turn according to the CurrentDirection
+        private ConsoleKey GetLeftTurnKey()
+        {
+            Directions posibleDirection = this.CurrentDirection == Directions.up ? Directions.left : (Directions)((int)CurrentDirection - 1);
+            return (ConsoleKey)this.Controlls[(int)posibleDirection];
+        }
+
+        // return the left right according to the CurrentDirection
+        private ConsoleKey GetRightTurnKey()
+        {
+            Directions posibleDirection = this.CurrentDirection == Directions.left ? Directions.up : (Directions)((int)CurrentDirection + 1);
+            return (ConsoleKey)this.Controlls[(int)posibleDirection];
+        }
+
+                    // test GetPosibleDirections
+            // Directions[] snakeDirections1 = testSnake.GetPosibleDirections();
+            // Debug.Assert(Array.Exists(snakeDirections1, dir => dir == Directions.left));
+            // Debug.Assert(Array.Exists(snakeDirections1, dir => dir == Directions.right));
+            // Debug.Assert(!Array.Exists(snakeDirections1, dir => dir == Directions.up));
+            // Debug.Assert(!Array.Exists(snakeDirections1, dir => dir == Directions.down));
